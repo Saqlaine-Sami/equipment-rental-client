@@ -1,2 +1,92 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+/* GearHaven theme */
+@plugin "daisyui/theme" {
+  name: "gearhaven";
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: #ffffff;
+  --color-base-200: #f1f5f4;
+  --color-base-300: #dbe5e3;
+  --color-base-content: #0f172a;
+
+  --color-primary: #0f766e;
+  --color-primary-content: #ffffff;
+  --color-secondary: #f59e0b;
+  --color-secondary-content: #1c1917;
+  --color-accent: #14b8a6;
+  --color-accent-content: #042f2e;
+  --color-neutral: #0f172a;
+  --color-neutral-content: #e2e8f0;
+
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #f59e0b;
+  --color-warning-content: #1c1917;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.875rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme inline {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* সব পেজে একই container, heading ও subtitle */
+@layer components {
+  .page-container {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 80rem;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 640px) {
+    .page-container {
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .page-container {
+      padding-inline: 2rem;
+    }
+  }
+
+  .section-title {
+    font-size: 1.875rem;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-base-content);
+  }
+  @media (min-width: 768px) {
+    .section-title {
+      font-size: 2.25rem;
+    }
+  }
+
+  .section-subtitle {
+    margin-top: 0.75rem;
+    max-width: 42rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: color-mix(in oklab, var(--color-base-content) 70%, transparent);
+  }
+}

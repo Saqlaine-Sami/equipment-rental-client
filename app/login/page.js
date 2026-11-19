@@ -7,6 +7,8 @@ import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
 import { requestToken } from "@/lib/api";
 import { useAuth } from "@/components/AuthProvider";
+import GoogleButton from "@/components/GoogleButton";
+
 export default function LoginPage() {
   const router = useRouter();
   const { refreshUser } = useAuth();
@@ -81,6 +83,10 @@ export default function LoginPage() {
           <button type="submit" className="btn btn-primary w-full mt-2" disabled={loading}>
             {loading ? <span className="loading loading-spinner"></span> : "Login"}
           </button>
+
+          {/* নতুন: এই তিন লাইন */}
+          <div className="divider text-sm">OR</div>
+          <GoogleButton />
 
           <p className="text-center text-sm mt-2">
             New here?{" "}

@@ -8,6 +8,8 @@ import { authClient } from "@/lib/auth-client";
 import { API_URL, requestToken } from "@/lib/api";
 import { validatePassword } from "@/lib/validators";
 import { useAuth } from "@/components/AuthProvider";
+import GoogleButton from "@/components/GoogleButton";
+
 export default function RegisterPage() {
   const router = useRouter();
   const { refreshUser } = useAuth();
@@ -124,6 +126,11 @@ export default function RegisterPage() {
             {loading ? <span className="loading loading-spinner"></span> : "Register"}
           </button>
 
+          {/* নতুন: এই তিন লাইন */}
+          <div className="divider text-sm">OR</div>
+          <GoogleButton />
+
+          
           <p className="text-center text-sm mt-2">
             Already have an account?{" "}
             <Link href="/login" className="link link-primary">

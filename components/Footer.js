@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
+import CurrentYear from "@/components/CurrentYear";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -87,7 +88,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <p className="page-container py-5 text-center text-sm text-neutral-content/60">
-          © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+                    © <CurrentYear /> {SITE.name}. All rights reserved.
         </p>
       </div>
     </footer>

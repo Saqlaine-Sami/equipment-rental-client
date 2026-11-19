@@ -7,7 +7,7 @@ export default function Home() {
   const { user, loading, logout } = useAuth();
 
   return (
-    <main className="min-h-screen flex items-center justify-center">
+        <main className="flex min-h-[70vh] items-center justify-center">
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold">Equipment Rental Platform</h1>
 

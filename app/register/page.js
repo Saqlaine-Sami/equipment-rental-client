@@ -7,9 +7,10 @@ import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
 import { API_URL, requestToken } from "@/lib/api";
 import { validatePassword } from "@/lib/validators";
-
+import { useAuth } from "@/components/AuthProvider";
 export default function RegisterPage() {
   const router = useRouter();
+  const { refreshUser } = useAuth();
   const [loading, setLoading] = useState(false);
 
   const handleRegister = async (event) => {
@@ -54,6 +55,7 @@ export default function RegisterPage() {
 
       // ৩. JWT token নেওয়া
       await requestToken(email);
+      await refreshUser(email);
 
       toast.success("Registration successful!");
       router.push("/");

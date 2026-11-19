@@ -1,30 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import { authClient } from "@/lib/auth-client";
-import { clearToken } from "@/lib/api";
+import { useAuth } from "@/components/AuthProvider";
 
 export default function Home() {
-  const { data: session, isPending } = authClient.useSession();
-
-  const handleLogout = async () => {
-    await authClient.signOut();
-    clearToken();
-  };
+  const { user, loading, logout } = useAuth();
 
   return (
     <main className="min-h-screen flex items-center justify-center">
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold">Equipment Rental Platform</h1>
 
-        {isPending ? (
+        {loading ? (
           <span className="loading loading-spinner"></span>
-        ) : session ? (
+        ) : user ? (
           <>
             <p>
-              Logged in as <b>{session.user.name}</b> ({session.user.email})
+              Logged in as <b>{user.name}</b> ({user.email})
             </p>
-            <button onClick={handleLogout} className="btn btn-outline">
+            <p>
+              Role: <span className="badge badge-primary">{user.role}</span>
+            </p>
+            <button onClick={logout} className="btn btn-outline">
               Logout
             </button>
           </>

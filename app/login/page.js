@@ -6,9 +6,10 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
 import { requestToken } from "@/lib/api";
-
+import { useAuth } from "@/components/AuthProvider";
 export default function LoginPage() {
   const router = useRouter();
+  const { refreshUser } = useAuth();
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (event) => {
@@ -35,6 +36,7 @@ export default function LoginPage() {
         toast.error(tokenError.message);
         return;
       }
+      await refreshUser(data.user.email);
 
       toast.success("Login successful!");
       router.push("/");
